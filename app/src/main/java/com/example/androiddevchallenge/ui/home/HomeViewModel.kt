@@ -13,21 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.ui.home
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import com.example.androiddevchallenge.ui.NavGraph
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.example.androiddevchallenge.data.InMemoryPuppyRepository
+import com.example.androiddevchallenge.data.PuppyRepository
+import com.example.androiddevchallenge.data.model.Puppy
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyTheme {
-                NavGraph()
-            }
-        }
-    }
+class HomeViewModel(
+    repository: PuppyRepository = InMemoryPuppyRepository
+) : ViewModel() {
+
+    val puppies: LiveData<List<Puppy>> =
+        repository.getPuppies().asLiveData()
 }

@@ -13,21 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.androiddevchallenge
+package com.example.androiddevchallenge.data.model
 
-import android.os.Bundle
-import androidx.activity.compose.setContent
-import androidx.appcompat.app.AppCompatActivity
-import com.example.androiddevchallenge.ui.NavGraph
-import com.example.androiddevchallenge.ui.theme.MyTheme
+import androidx.annotation.DrawableRes
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            MyTheme {
-                NavGraph()
-            }
-        }
-    }
-}
+data class Puppy(
+    val id: String,
+    @DrawableRes val imageResId: Int,
+    val type: String,
+    val adoption: Boolean = false
+)
